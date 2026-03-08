@@ -1,23 +1,20 @@
-function detectGesture(landmarks: any) {
-  const isFingerUp = (tip: number, pip: number) =>
-    landmarks[tip].y < landmarks[pip].y
+export type Move = "rock" | "paper" | "scissors"
 
-  const indexUp = isFingerUp(8, 6)
-  const middleUp = isFingerUp(12, 10)
-  const ringUp = isFingerUp(16, 14)
-  const pinkyUp = isFingerUp(20, 18)
+export function getComputerMove(): Move {
+  const moves: Move[] = ["rock", "paper", "scissors"]
+  return moves[Math.floor(Math.random() * moves.length)]
+}
 
-  if (!indexUp && !middleUp && !ringUp && !pinkyUp) {
-    return "rock"
+export function decideWinner(player: Move, computer: Move): "player" | "computer" | "draw" {
+  if (player === computer) return "draw"
+
+  if (
+    (player === "rock" && computer === "scissors") ||
+    (player === "paper" && computer === "rock") ||
+    (player === "scissors" && computer === "paper")
+  ) {
+    return "player"
   }
 
-  if (indexUp && middleUp && ringUp && pinkyUp) {
-    return "paper"
-  }
-
-  if (indexUp && middleUp && !ringUp && !pinkyUp) {
-    return "scissors"
-  }
-
-  return "unknown"
+  return "computer"
 }
