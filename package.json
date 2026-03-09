@@ -12,6 +12,7 @@
     "@mediapipe/camera_utils": "^0.3.1675466862",
     "@mediapipe/hands": "^0.4.1675469240",
     "next": "16.1.6",
+    "phaser": "^3.90.0",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "three": "^0.183.2"
